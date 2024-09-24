@@ -1,0 +1,31 @@
+python
+Copiar código
+import pandas as pd
+
+# Função para cadastrar clientes
+def cadastrar_cliente():
+    clientes = []
+    while True:
+        nome = input("Digite o nome do cliente: ")
+        idade = int(input("Digite a idade do cliente: "))
+        email = input("Digite o email do cliente: ")
+        plano = input("Digite o plano escolhido: ")
+
+        clientes.append({
+            "Nome": nome,
+            "Idade": idade,
+            "Email": email,
+            "Plano": plano
+        })
+
+        continuar = input("Deseja cadastrar outro cliente? (s/n): ")
+        if continuar.lower() != 's':
+            break
+
+    # Cria um DataFrame e salva em uma planilha Excel
+    df = pd.DataFrame(clientes)
+    df.to_excel("cadastro_clientes_forlink.xlsx", index=False)
+    print("Cadastro concluído e salvo em 'cadastro_clientes_forlink.xlsx'.")
+
+# Executa a função
+cadastrar_cliente()
